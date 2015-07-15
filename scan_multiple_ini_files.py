@@ -1,12 +1,15 @@
+"""
+    scan the sample INI files for parsing errors
+"""
 import os
 
-from patch_ini_file import ini_file_can_be_parsed
+from config_mgr import ini_file_can_be_parsed
 
-cwd = os.getcwd()
-cwd = cwd + '/test/sample_ini_files/'
+CWD = os.getcwd()
+CWD = CWD + '/test/sample_ini_files/'
 
-filelist = os.listdir(cwd)
+FILELIST = os.listdir(CWD)
 
-for filename in filelist:
+for filename in FILELIST:
     print filename
-    ini_file_can_be_parsed(cwd + filename)
+    ini_file_can_be_parsed(CWD + filename)

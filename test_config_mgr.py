@@ -76,5 +76,8 @@ def test_proper_function_when_custom_is_superset_of_default():
     assert patch_ini_file(TEST1, TEST2, PATCH=False, EXACT=True) == False
 
 # teardown temporary files
+#TODO delete test1
+#TODO delete test2
 
 # report success
+#not needed since pytest communicates status

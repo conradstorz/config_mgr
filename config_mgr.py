@@ -1,5 +1,6 @@
 """
-    config_mgr exports 2 functions for managing INI style configuration files.
+    config_mgr exports 3 functions for managing INI style configuration files.
+    patch_ini_file, ini_file_can_be_parsed, and parse_ini_file_into_dict
 """
 
 from ConfigParser import SafeConfigParser
@@ -74,3 +75,24 @@ def ini_file_can_be_parsed(filename):
     except InterpError:
         print "File contains interpolation error(s)", sys.exc_info()[0], sys.exc_info()[1]
     return result
+
+def parse_ini_file_into_dict(filename):
+    """
+        Takes a valid INI filename and returns a dictionary of the sections, options and values
+    """
+    output = {}
+
+    INIfile = SafeConfigParser()
+    result = INIfile.read(filename) # returns an empty list if file error
+    if result == []:
+        raise IOError
+
+    #iterate through INI file and build dictionary
+    for section_name in INIfile.sections():
+        section_dict = {}
+        for option_name in INIfile.options(section_name):
+            option_value = INIfile.get(section_name, option_name)
+            section_dict[option_name] = option_value
+        output[section_name] = section_dict
+
+    return output

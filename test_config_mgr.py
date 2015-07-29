@@ -5,14 +5,17 @@
 """
 
 VALID_INI_FILE = 'sample.ini' # sample data file
+VALID_INI_FILE_JSON = 'sample.dict'
 MISSING1 = 'notThere.ini'
 MISSING2 = 'Gone.ini'
 TEST1 = 'temp_test1.ini'
 TEST2 = 'temp_test2.ini'
 
 from config_mgr import patch_ini_file
+from config_mgr import parse_ini_file_into_dict
 # define tests for patch_ini_file()
 
+import json
 import pytest
 
 # the function should not change or care what the current working directory is.
@@ -74,6 +77,15 @@ def test_proper_function_when_custom_is_superset_of_default():
         customINI.write(config_file)
     assert patch_ini_file(TEST1, TEST2, PATCH=False, EXACT=False) == True
     assert patch_ini_file(TEST1, TEST2, PATCH=False, EXACT=True) == False
+
+# parse ini file into a dictionary
+def test_can_parse_ini_file_into_dict():
+    # recover json file containing dict version of sample INI file.
+    with open(VALID_INI_FILE_JSON) as data_file:    
+        ini_dict = json.load(data_file)
+
+    assert parse_ini_file_into_dict(VALID_INI_FILE) == ini_dict
+
 
 # teardown temporary files
 #TODO delete test1

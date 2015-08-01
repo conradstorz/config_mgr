@@ -1,0 +1,50 @@
+[Location]
+#city is no longer used - so don't worry about this.
+city = Pasadena,CA
+lat = 34.1437
+lon = -118.1103
+timezone = America/Los_Angeles
+elevation = 227
+
+[options]
+stationname = ISSAbove-HD-2.015
+locationname = Unconfigured ISSAbove in Pasadena, CA
+minalt = 0
+metric = False
+daystorefresh = 3
+adminusername = admin
+adminpassword = nasa
+adminpasswordrequired = True
+
+[ISSAboveToWordpress]
+postlocation = False
+post = True
+tweetalt = 40
+publish = True
+username = issabove-hd
+password = Y,~,T3yX@sHaYcT
+postcontent = This message was created by an ISS-Above that is somewhere in the world.  Hopefully the user will update this information soon<br /><br />
+	This is one of the first new versions of the ISS-Above which features extended information via an attached Monitor (HDMI or Composite TV).   
+  It also streams live video from the ISS HD Earth Viewing Experiment.   
+  And.. as well as all that this little device lights up whenever The International Space Station is overhead.  <br /><br />
+	How cool is that?!
+
+#no displays configured yet
+[DisplayDevices]
+
+
+[www]
+imageurl = http://issabove.com/wp-content/uploads/2014/06/ISS-Above-Logo-HD-sm.png
+imageheight = 194
+imagewidth = 300
+
+[TWEETmessages]
+tweet1 = Hello to the #ISS and everyone up there!
+tweet2 = I hope everyone in the #ISS is having a GREAT day!
+tweet3 = How's it hanging in the #ISS today?
+
+[Setup]
+firsttimesetup=True
+shutdownonfirstboot=False
+
+[hdvideo]
